@@ -81,7 +81,6 @@ app.post('/settings', async (req, res) => {
         const priceId = priceResponse.data.data.id;
         console.log(priceId);
 
-        // Save settings to the database
         const newlyCreatedSettings = await Settings.create({
             productId: productId,
             priceId: priceId,
@@ -103,7 +102,7 @@ app.post('/settings', async (req, res) => {
         } else {
             console.log(error.message);
         }
-    }   
+    }
 
     https.get("https://api.apiflash.com/v1/urltoimage?" + new URLSearchParams({
         access_key: "19076f52b14d44f5a5c7240bc2d270e9",
@@ -119,15 +118,23 @@ app.post('/settings', async (req, res) => {
         response.pipe(fs.createWriteStream('./public/images/screenshot.jpeg'));
     });
     setTimeout(() => {
-        res.status(200).redirect('http://localhost:8000/pricing');
+        res.status(200).redirect('/pricing');
     }, 10000);
 })
 
 app.get('/get-settings', async (req, res) => {
-    console.log("Server hit")
+    console.log("get-settings endpoint hit")
     const returnedResult = await Settings.find().sort({ _id: -1 }).limit(1)
     console.log(returnedResult[0])
     res.json(returnedResult[0])
+})
+
+app.post('/get-checkout-settings', async (req, res) => {
+    console.log("get-checkout-settings hit")
+    const id = req.body.id
+    const returnedResult = await Settings.findById(id).exec();
+    console.log(returnedResult)
+    res.json(returnedResult)
 })
 
 app.listen('8000', (req, res) => {

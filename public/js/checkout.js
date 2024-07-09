@@ -1,10 +1,11 @@
 let itemList = []
 
-fetch('http://localhost:8000/get-settings', {
-    method: 'GET',
+fetch('/get-checkout-settings', {
+    method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
+    body: JSON.stringify({id: sessionStorage.getItem('mySettingsId')})
 })
     .then(response => response.json())
     .then(response => {
