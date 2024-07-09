@@ -1,5 +1,5 @@
 console.log('Fetching...')
-fetch('http://localhost:8000/get-settings', {
+fetch('/get-settings', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'

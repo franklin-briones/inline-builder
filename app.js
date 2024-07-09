@@ -134,10 +134,19 @@ app.post('/get-checkout-settings', async (req, res) => {
     console.log("get-checkout-settings hit")
     const id = req.body.id
     const returnedResult = await Settings.findById(id).exec();
-    console.log(returnedResult)
+    console.log('returned result for above', returnedResult)
     res.json(returnedResult)
 })
 
-app.listen('8000', (req, res) => {
-    console.log('Server is listening on port 8000')
-})
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+
+
+// app.listen('8000', (req, res) => {
+//     console.log('Server is listening on port 8000')
+// })
+
+export default app
