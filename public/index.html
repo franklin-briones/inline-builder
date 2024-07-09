@@ -81,14 +81,14 @@
         <h3>1. Create a product and a price</h3>
 
         <label for="productName" class="required">Product Name (Required to create product):</label>
-        <input type="text" name="productName" id="productName" required placeholder="Strava">
+        <input type="text" name="productName" id="productName" required placeholder="Strava" value="Strava">
 
         <label for="priceDescription" class="required">Price Description (Required to create price):</label>
-        <input type="text" name="priceDescription" id="priceDescription" required placeholder="Pro Monthly Plan">
+        <input type="text" name="priceDescription" id="priceDescription" required placeholder="Pro Monthly Plan" value="Pro Monthly Plan">
         <label for="basePrice" class="required">Base USD Price (Lowest denomiation, e.g. 1000 = $10.00):</label>
-        <input type="text" name="basePrice" id="basePrice" required placeholder="1000">
+        <input type="text" name="basePrice" id="basePrice" required placeholder="1000" value="1000">
         <label for="basePriceName" class="required">Price Name (Will appear at checkout):</label>
-        <input type="text" name="basePriceName" id="basePriceName" placeholder="Pro Monthly">
+        <input type="text" name="basePriceName" id="basePriceName" placeholder="Pro Monthly" value="Pro Monthly">
         <label for="interval" class="required">Recurring Interval:</label>
         <select name="interval" id="interval" required>
             <option value="day">Day</option>
@@ -97,23 +97,25 @@
             <option value="year">Year</option>
         </select>
         <label for="frequency" class="required">Frequency:</label>
-        <input type="text" name="frequency" id="frequency" required placeholder="1">
+        <input type="text" name="frequency" id="frequency" required placeholder="1" value="1">
 
         <h3>2. Enter seller's logo image address</h3>
         <label for="logo" class="required">Logo URL (Will appear top-left corner):</label>
         <input type="text" name="logo" id="logoInput" required
-            placeholder="https://static-00.iconduck.com/assets.00/strava-icon-2048x2048-4fppqh38.png">
+            placeholder="https://static-00.iconduck.com/assets.00/strava-icon-2048x2048-4fppqh38.png"
+            value="https://static-00.iconduck.com/assets.00/strava-icon-2048x2048-4fppqh38.png"">
 
         <h3>3. Enter primary brand colour</h3>
         <label for="primaryColour" class="required">Primary Colour (Hexcode only - include #, 3-8 characters):</label>
-        <input type="text" name="primaryColour" id="primaryColour" required placeholder="#FD4C04">
+        <input type="text" name="primaryColour" id="primaryColour" required placeholder="#FD4C04" value="#FD4C04">
         <!-- <label for="secondaryColour">Secondary Colour:</label>
         <input type="text" name="secondaryColour" id="secondaryColour"> -->
 
         <h3>4. Enter seller's pricing page URL</h3>
         <label for="preCheckoutUrl" class='required'>Pricing Page URL (Will screenshot seller's pricing page):</label>
         <input type="text" name="preCheckoutUrl" id="preCheckoutUrl" required
-            placeholder="https://www.strava.com/subscribe">
+            placeholder="https://www.strava.com/subscribe"
+            value="https://www.strava.com/subscribe">
 
         <input id="submit" type="submit" value="Submit">
     </form>
