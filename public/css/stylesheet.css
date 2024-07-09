@@ -1,0 +1,214 @@
+#pricingImage {
+    width: 100vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    color: rgb(51, 65, 85);
+}
+
+.backgroundBeams {
+    width: 100%;
+    height: 100vh;
+    --primary-color: #FC4C0240;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 1) 15%, #e378e120 38%, var(--primary-color) 46%, rgba(255, 255, 255, 0.4976584383753502) 57%, rgba(255, 255, 255, 0.2987788865546218) 66%, #e378e120 81%, rgba(255, 255, 255, 1) 97%);
+    background-size: 200% 200%;
+    background-position: 40% 100%;
+    background-blend-mode: screen;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0px -320px 320px -10px rgba(255, 255, 255);
+    z-index: -1;
+}
+
+.gridBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image:
+        linear-gradient(to right, rgba(204, 204, 204, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(204, 204, 204, 0.2) 1px, transparent 1px);
+    background-size: 35px 35px;
+    box-shadow: inset 0px -440px 320px -10px rgba(255, 255, 255);
+}
+
+#pageContainer {
+    display: flex;
+}
+
+#leftContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1px;
+    padding: 40px 64px 112px 64px;
+    box-shadow: 0px 25px 50px -12px rgb(0 0 0 / .25);
+    min-height: 100vh;
+    max-width: 410px;
+}
+
+#logo {
+    max-height: 48px;
+    height: auto;
+    width: auto;
+    align-self: self-start;
+    padding-left: 10px;
+}
+
+#breadcrumbs {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0px 10px 52px 10px;
+    margin-top: 32px;
+    background-color: #fff;
+    z-index: 1;
+}
+
+#breadcrumbs>p,
+i {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#breadcrumbs>i {
+    color: rgb(213, 213, 213);
+}
+
+.checkoutContainer {
+    margin-top: -52px;
+    z-index: 0;
+}
+
+#rightContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding: 0px 64px;
+}
+
+#rightAligningContainer {
+    padding: 96px 0px 40px 0px;
+    max-width: 512px;
+    z-index: 1;
+}
+
+#productLabels {
+    display: flex;
+    align-items: center;
+}
+
+#productLabels>h5 {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 16px;
+    /* color: #FC4C02; */
+    letter-spacing: 0.6px;
+}
+
+.brandedText {
+    margin: 0px;
+    font-weight: 600 !important;
+    font-size: 14px;
+    /* color: #FC4C02; */
+    letter-spacing: 0.6px;
+}
+
+#productLabels>h6 {
+    margin: 0px;
+    margin-left: 12px;
+    padding: 0px 12px;
+    font-weight: 500;
+    font-size: 12px;
+    color: rgb(100, 116, 139);
+    background-color: #cbd5e140;
+    padding: 0px 12px;
+    border-radius: 12px;
+    text-align: center;
+    letter-spacing: 0.6px;
+    line-height: 1.5rem;
+}
+
+#grandTotal {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+#grandTotalCurrency {
+    font-weight: 500;
+}
+
+#grandTotalPrice {
+    margin: 0px;
+    color: rgb(42 56 90);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    font-family: 'Helvetica';
+}
+
+#dueTodayLabel {
+    margin: 0px 0px 0px 12px;
+    color: rgb(100, 116, 139);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.greyTextMargin {
+    margin: 24px 0px 0px 0px;
+    line-height: 1.75rem;
+}
+
+.greyText {
+    line-height: 1.75rem;
+    color: rgb(51 65 85);
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Helvetica";
+}
+
+#currencyGreyText {
+    margin: 24px 0px 0px 0px;
+    line-height: 1.5rem;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Helvetica";
+    font-size: 14px;
+}
+
+#pricingTableSection {
+    display: flex;
+    margin-top: 40px;
+}
+
+#pricingTable {
+    width: 100%;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0px;
+    align-items: baseline;
+}
+
+.boldText {
+    color: rgb(35, 46, 75);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+#taxesLine {
+    border-top: solid rgba(15, 23, 42, 0.05) 1px;
+    border-bottom: solid rgba(15, 23, 42, 0.05) 1px;
+}
+
+#totalPrice {
+    border-bottom: solid rgba(15, 23, 42, 0.05) 1px;
+}

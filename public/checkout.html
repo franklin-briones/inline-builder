@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <script src="https://kit.fontawesome.com/6e759bf7c0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script type="text/javascript">
+        Paddle.Environment.set("sandbox");
+        Paddle.Initialize({
+            token: "test_7049100eb7696998be8107edc0f",
+            eventCallback: function (data) {
+                if (data.type !== "checkout.ping.size") {
+                    console.log(data)
+                    let currencySymbols = document.getElementsByClassName('currencySymbol')
+                    for (const key in currencySymbols) {
+                        if (currencySymbols.hasOwnProperty(key)) {
+                            const element = currencySymbols[key];
+                            if (element) {
+                                if (data.data.currency_code === 'GBP') {
+                                    element.innerText = '£';
+                                } else if (data.data.currency_code === 'USD') {
+                                    element.innerText = '$';
+                                } else if (data.data.currency_code === 'EUR') {
+                                    element.innerText = '€';
+                                } else {
+                                    element.innerText = `${data.data.currency_code} `
+                                }
+                            }
+                        }
+                    }
+                    document.getElementById('grandTotalAmount').innerText = data.data.totals.total.toFixed(2)
+                    document.getElementById('priceQuantity').innerText = data.data.items[0].quantity
+                    document.getElementById('priceName').innerText = data.data.items[0].price_name
+                    document.getElementById('productSubtotal').innerText = data.data.items[0].totals.subtotal.toFixed(2)
+                    document.getElementById('totalSubtotal').innerText = data.data.totals.subtotal.toFixed(2)
+                    document.getElementById('taxTotal').innerText = data.data.totals.tax.toFixed(2)
+                    document.getElementById('totalToday').innerText = data.data.totals.total.toFixed(2)
+                    document.getElementById('recurringTotal').innerText = data.data.recurring_totals.total.toFixed(2)
+                    document.getElementById('recurringInterval').innerText = data.data.items[0].billing_cycle.interval
+                    document.getElementById('currencyLabel').innerText = data.data.currency_code
+                }
+
+                if (data.name === 'checkout.customer.created') {
+                    document.getElementById('yourDetails').classList.remove('brandedText')
+                    document.getElementById('payment').classList.add('brandedText')
+                }
+            }
+        });
+    </script>
+    <script src="./js/checkout.js"></script>
+</head>
+
+<body>
+    <div id="pageContainer">
+
+        <div id="leftContainer">
+            <img src="https://miro.medium.com/v2/resize:fit:1260/1*ngNzwrRBDElDnf2CLF_Rbg.gif"
+                alt="" id="logo">
+            <div id="breadcrumbs">
+                <p class="breadcrumbLabel">Packages</p>
+                <i class="fa-solid fa-chevron-right"></i>
+                <p id="yourDetails" class="breadcrumbLabel brandedText">Your details</p>
+                <i class="fa-solid fa-chevron-right"></i>
+                <p id="payment" class="breadcrumbLabel">Payment</p>
+            </div>
+            <div class="checkoutContainer"></div>
+        </div>
+
+        <div id="rightContainer" class="backgroundBeams">
+            <div class="gridBackground"></div>
+            <div id="rightAligningContainer">
+                <div id="topRightProductInfo">
+                    <div id="productLabels">
+                        <h5 class="brandedText">All-access</h5>
+                        <h6>Team license</h6>
+                    </div>
+                    <div id="grandTotal">
+                        <h3 id="grandTotalPrice"><span id="grandTotalCurrency" class="currencySymbol">£</span><span
+                                id="grandTotalAmount">10.00</span></h3>
+                        <h4 id="dueTodayLabel">due today</h4>
+                    </div>
+                    <p class="greyText greyTextMargin">Includes full access for your team, plus all future updates.
+                        Includes full access for your team, plus all future updates.</p>
+                    <p id="currencyGreyText">All prices in <span id="currencyLabel">GBP</span></p>
+                </div>
+
+                <div id="pricingTableSection">
+                    <table id="pricingTable">
+                        <tr id="productLine">
+                            <td class="greyText"><span id="priceQuantity">1</span>x <span id="priceName">Unit</span>
+                            </td>
+                            <td class="greyText"><span class="currencySymbol">£</span><span
+                                    id="productSubtotal">8.00</span></td>
+                        </tr>
+                        <tr id="subtotalLine">
+                            <td class="greyText">Subtotal</td>
+                            <td class="boldText"><span class="currencySymbol">£</span><span
+                                    id="totalSubtotal">8.00</span></td>
+                        </tr>
+                        <tr id="taxesLine">
+                            <td class="greyText">Taxes</td>
+                            <td class="greyText"><span class="currencySymbol">£</span><span id="taxTotal">2.00</span>
+                            </td>
+                        </tr>
+                        <tr id="totalPrice">
+                            <td class="greyText boldText">Total price (due today)</td>
+                            <td class="boldText"><span class="currencySymbol">£</span><span id="totalToday">10.00</span>
+                            </td>
+                        </tr>
+                        <tr id="recurringPrice">
+                            <td class="greyText">then</td>
+                            <td class="greyText"><span class="currencySymbol">£</span><span
+                                    id="recurringTotal">10.00</span> every <span id="recurringInterval">month</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

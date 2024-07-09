@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Checkout Demo Builder</title>
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #myForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2,
+        h3 {
+            color: #333;
+            text-align: start;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .required:after {
+            content: ' *';
+            color: red;
+            font-weight: 100;
+        }
+
+        input[type="text"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm" action="/settings" method="POST" onsubmit="startCountdown(event)">
+        <h1>Inline Checkout Demo Builder</h1>
+        <h3>1. Create a product and a price</h3>
+
+        <label for="productName" class="required">Product Name (Required to create product):</label>
+        <input type="text" name="productName" id="productName" required placeholder="Strava">
+
+        <label for="priceDescription" class="required">Price Description (Required to create price):</label>
+        <input type="text" name="priceDescription" id="priceDescription" required placeholder="Pro Monthly Plan">
+        <label for="basePrice" class="required">Base USD Price (Lowest denomiation, e.g. 1000 = $10.00):</label>
+        <input type="text" name="basePrice" id="basePrice" required placeholder="1000">
+        <label for="basePriceName" class="required">Price Name (Will appear at checkout):</label>
+        <input type="text" name="basePriceName" id="basePriceName" placeholder="Pro Monthly">
+        <label for="interval" class="required">Recurring Interval:</label>
+        <select name="interval" id="interval" required>
+            <option value="day">Day</option>
+            <option value="week">Week</option>
+            <option value="month" selected>Month</option>
+            <option value="year">Year</option>
+        </select>
+        <label for="frequency" class="required">Frequency:</label>
+        <input type="text" name="frequency" id="frequency" required placeholder="1">
+
+        <h3>2. Enter seller's logo image address</h3>
+        <label for="logo" class="required">Logo URL (Will appear top-left corner):</label>
+        <input type="text" name="logo" id="logoInput" required placeholder="https://static-00.iconduck.com/assets.00/strava-icon-2048x2048-4fppqh38.png">
+
+        <h3>3. Enter primary brand colour</h3>
+        <label for="primaryColour" class="required">Primary Colour (Hexcode only - include #, 3-8 characters):</label>
+        <input type="text" name="primaryColour" id="primaryColour" required placeholder="#FD4C04">
+        <!-- <label for="secondaryColour">Secondary Colour:</label>
+        <input type="text" name="secondaryColour" id="secondaryColour"> -->
+
+        <h3>4. Enter seller's pricing page URL</h3>
+        <label for="preCheckoutUrl" class='required'>Pricing Page URL (Will screenshot seller's pricing page):</label>
+        <input type="text" name="preCheckoutUrl" id="preCheckoutUrl" required placeholder="https://www.strava.com/subscribe">
+
+        <input id="submit" type="submit" value="Submit">
+    </form>
+
+    <script>
+        const startCountdown = () => {
+            document.getElementById('submit').value = "Creating pricing page... wait 10 seconds"
+        }
+    </script>
+</body>
+
+</html>
