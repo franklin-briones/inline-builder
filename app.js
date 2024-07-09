@@ -11,6 +11,11 @@ import 'dotenv/config'
 const app = express()
 app.use(express.json())
 
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+
 app.use(express.static('./public'))
 
 const __filename = fileURLToPath(import.meta.url)
@@ -139,10 +144,7 @@ app.post('/get-checkout-settings', async (req, res) => {
 })
 
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+
 
 
 // app.listen('8000', (req, res) => {
