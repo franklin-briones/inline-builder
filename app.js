@@ -6,6 +6,7 @@ import Settings from './models/Settings.js'
 import https from 'https'
 import fs from 'fs'
 import axios from 'axios'
+import 'dotenv/config'
 
 const app = express()
 app.use(express.json())
@@ -48,7 +49,7 @@ app.post('/settings', async (req, res) => {
         // Create the product
         const productResponse = await axios.post('https://sandbox-api.paddle.com/products', createProductRequest, {
             headers: {
-                'Authorization': 'Bearer 638d13ef531c884274a084cb3eb102e021cef14a91e7d4802a',
+                'Authorization': `Bearer ${process.env.PADDLE_SANDBOX_KEY}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -73,7 +74,7 @@ app.post('/settings', async (req, res) => {
 
         const priceResponse = await axios.post('https://sandbox-api.paddle.com/prices', createPricesRequest, {
             headers: {
-                'Authorization': 'Bearer 638d13ef531c884274a084cb3eb102e021cef14a91e7d4802a',
+                'Authorization': `Bearer ${process.env.PADDLE_SANDBOX_KEY}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -105,7 +106,7 @@ app.post('/settings', async (req, res) => {
     }
 
     https.get("https://api.apiflash.com/v1/urltoimage?" + new URLSearchParams({
-        access_key: "19076f52b14d44f5a5c7240bc2d270e9",
+        access_key: `${process.env.APIFLASH_API_KEY}`,
         url: `${preCheckoutUrl}`,
         quality: 100,
         width: 1512,
